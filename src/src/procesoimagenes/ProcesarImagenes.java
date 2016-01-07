@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,25 +20,26 @@ import javax.imageio.ImageIO;
  */
 public class ProcesarImagenes {
     
-    public void procesaImagenesStock(){
-        ProcesarImagenes pros = new ProcesarImagenes();
-        File dir = new File("imgs");
-        String[] ficheros = dir.list();
-        for (String fichero : ficheros) {
-            if(fichero.endsWith(".jpg")){                
-                try {
-                    File f = new File("imgs/"+fichero);
-                    String nombre = pros.promedioRGB(ImageIO.read(f));
-                    if(!f.renameTo(new File("imgs/"+nombre))){
-                        System.out.println("Error: "+"imgs/"+fichero);
-                    }
-                } catch (IOException ex) {
-//                    Logger.getLogger(ProcesarImagenes.class.getName()).log(Level.SEVERE, null, ex);
-                    System.out.println("Error");
-                }
-            }
-            
-        }
+    public static void main(String[] args){
+        JOptionPane.showMessageDialog(null, "Se generó el archivo fotomosaico.html exitosamente ", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+//        ProcesarImagenes pros = new ProcesarImagenes();
+//        File dir = new File("imgs");
+//        String[] ficheros = dir.list();
+//        for (String fichero : ficheros) {
+//            if(fichero.endsWith(".jpg")){                
+//                try {
+//                    File f = new File("imgs/"+fichero);
+//                    String nombre = pros.promedioRGB(ImageIO.read(f));
+//                    if(!f.renameTo(new File("imgs/"+nombre))){
+//                        System.out.println("Error: "+"imgs/"+fichero);
+//                    }
+//                } catch (IOException ex) {
+////                    Logger.getLogger(ProcesarImagenes.class.getName()).log(Level.SEVERE, null, ex);
+//                    System.out.println("Error");
+//                }
+//            }
+//            
+//        }
     }
     
     public String promedioRGB(BufferedImage img){

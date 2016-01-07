@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,7 +24,7 @@ public class Filtros {
     
     public Filtros(){
         imgs = new ArrayList<String>();
-        //cargaImagenes();
+        
     }
     
     public BufferedImage rojo(BufferedImage img){
@@ -160,6 +161,7 @@ public class Filtros {
         return imgTmp;
     }
     public void fotomosaico(BufferedImage img){
+        cargaImagenes();
         Color c;        
         int ancho = 10;
         int ancho2 = 15;
@@ -170,13 +172,12 @@ public class Filtros {
                 c = calculaPromedioRGB(subMatriz(img, x, y, ancho, ancho2));
                 int distanciaLineal = (65535 * c.getRed()) + (256 * c.getGreen()) + c.getBlue();
                 String foto = buscaDiferenciaLineal(distanciaLineal);
-                tabla += "<td><img src=\"imgs/"+foto+"\" style=\"width: 10px;height:15px\" ></td>";
+                tabla += "<td  style=\"width: 10px;height:15px\" ><img src=\"imagenes-stock/"+foto+"\" style=\"width: 10px;height:15px\" ></td>";
 
             }
             tabla += "</tr>";
         }
         tabla += "</table></body></html>";
-//        System.out.println(tabla);
         
         FileWriter fichero = null;
         PrintWriter pw;
@@ -196,6 +197,8 @@ public class Filtros {
                 e2.printStackTrace();
             }
         }
+        
+        JOptionPane.showMessageDialog(null, "Se generó el archivo fotomosaico.html exitosamente ", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
     }
     public String buscaDiferenciaLineal(int distancia){
         double delta = Double.MAX_VALUE;
@@ -211,8 +214,14 @@ public class Filtros {
         return i;   
     }
     private void cargaImagenes(){
-        File dir = new File("imgs");
+        File dir = new File("imagenes-stock");
+        if(dir == null){
+            return ;
+        }
         String[] ficheros = dir.list();
+        if(ficheros == null){
+            return ;
+        }
         for (String fichero : ficheros) {
             if (fichero.endsWith(".jpg")) {
                 imgs.add(fichero);

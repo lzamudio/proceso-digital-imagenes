@@ -27,6 +27,7 @@ public class ProcesoImagenes extends javax.swing.JFrame {
      */
     public ProcesoImagenes() {
         initComponents();
+        procesandoFotomosaico.setVisible(false);
     }
 
     /**
@@ -43,6 +44,7 @@ public class ProcesoImagenes extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         canvasImgSrc = new javax.swing.JLabel();
         canvasImgFiltro = new javax.swing.JLabel();
+        procesandoFotomosaico = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -78,6 +80,11 @@ public class ProcesoImagenes extends javax.swing.JFrame {
 
         canvasImgFiltro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         canvasImgFiltro.setText("Imagen con filtro");
+
+        procesandoFotomosaico.setBackground(new java.awt.Color(0, 153, 204));
+        procesandoFotomosaico.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        procesandoFotomosaico.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        procesandoFotomosaico.setText("Creando fotomosaico, por favor espera...");
 
         jMenu3.setText("Archivo");
 
@@ -238,22 +245,27 @@ public class ProcesoImagenes extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(canvasImgSrc, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(canvasImgFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(canvasImgSrc, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(canvasImgFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(procesandoFotomosaico)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(canvasImgFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(canvasImgSrc, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(canvasImgSrc, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                    .addComponent(canvasImgFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(procesandoFotomosaico)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -373,7 +385,9 @@ public class ProcesoImagenes extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+        procesandoFotomosaico.setVisible(true);
         filtro.fotomosaico(imgSrc);
+        procesandoFotomosaico.setVisible(false);
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     /**
@@ -439,5 +453,6 @@ public class ProcesoImagenes extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JLabel procesandoFotomosaico;
     // End of variables declaration//GEN-END:variables
 }
