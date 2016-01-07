@@ -18,14 +18,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author luisenriquezamudiocervantes
  */
-public class Main extends javax.swing.JFrame {
+public class ProcesoImagenes extends javax.swing.JFrame {
 
     Filtros filtro = new Filtros();
     BufferedImage imgSrc;
     /**
      * Creates new form Main
      */
-    public Main() {
+    public ProcesoImagenes() {
         initComponents();
     }
 
@@ -263,12 +263,12 @@ public class Main extends javax.swing.JFrame {
         //Creamos la variable que será devuelta
         BufferedImage bmp=null;
         //Creamos un nuevo cuadro de diálogo para seleccionar imagen. Lanza la ventana de busqueda
-        JFileChooser selector=new JFileChooser("/Users/luisenriquezamudiocervantes/Pictures/little-people-project");
+        JFileChooser selector=new JFileChooser();
         //Le damos un título a la ventana de busqueda
         selector.setDialogTitle("Seleccione una imagen");
         //Filtramos los tipos de archivos
         FileNameExtensionFilter filtroImagen = new FileNameExtensionFilter("JPG & GIF & BMP", "jpg", "gif", "bmp");
-		//Hacemos que solo aparescan los tipos de datos seleccionados en la ventana de busqueda
+        //Hacemos que solo aparescan los tipos de datos seleccionados en la ventana de busqueda
         selector.setFileFilter(filtroImagen);
         //Abrimos el cuadro de dialogo
         int flag=selector.showOpenDialog(null);
@@ -393,20 +393,21 @@ public class Main extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProcesoImagenes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProcesoImagenes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProcesoImagenes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProcesoImagenes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Main().setVisible(true);
+                new ProcesoImagenes().setVisible(true);
             }
         });
     }

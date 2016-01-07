@@ -19,25 +19,22 @@ import javax.imageio.ImageIO;
  */
 public class ProcesarImagenes {
     
-    public static void main(String[] args){
+    public void procesaImagenesStock(){
         ProcesarImagenes pros = new ProcesarImagenes();
         File dir = new File("imgs");
         String[] ficheros = dir.list();
         for (String fichero : ficheros) {
-            if(fichero.endsWith(".jpg")){
-                String[] temp = fichero.substring(0, fichero.indexOf(".jpg")).split("-");
-                int numeroColor = (65535*Integer.parseInt(temp[0])) + (256*Integer.parseInt(temp[1])) + Integer.parseInt(temp[2]) ; 
-                
-//                try {
-//                    File f = new File("imgs/"+fichero);
-//                    String nombre = pros.promedioRGB(ImageIO.read(f));
-//                    if(!f.renameTo(new File("imgs/"+nombre))){
-//                        System.out.println("Error: "+"imgs/"+fichero);
-//                    }
-//                } catch (IOException ex) {
-////                    Logger.getLogger(ProcesarImagenes.class.getName()).log(Level.SEVERE, null, ex);
-//                    System.out.println("Error");
-//                }
+            if(fichero.endsWith(".jpg")){                
+                try {
+                    File f = new File("imgs/"+fichero);
+                    String nombre = pros.promedioRGB(ImageIO.read(f));
+                    if(!f.renameTo(new File("imgs/"+nombre))){
+                        System.out.println("Error: "+"imgs/"+fichero);
+                    }
+                } catch (IOException ex) {
+//                    Logger.getLogger(ProcesarImagenes.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Error");
+                }
             }
             
         }

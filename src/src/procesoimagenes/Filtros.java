@@ -23,7 +23,7 @@ public class Filtros {
     
     public Filtros(){
         imgs = new ArrayList<String>();
-        cargaImagenes();
+        //cargaImagenes();
     }
     
     public BufferedImage rojo(BufferedImage img){
